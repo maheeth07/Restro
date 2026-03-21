@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary-500: #18181b; /* zinc-900 */
+  --color-primary-600: #09090b; /* zinc-950 */
+  --color-accent-600: #b45309;  /* amber-700 (champagne gold) */
+  --color-dark-900: #1c1917;    /* stone-900 */
+  --color-dark-800: #292524;    /* stone-800 */
+  --color-dark-700: #44403c;    /* stone-700 */
+  --color-text-main: #fafaf9;   /* stone-50 */
+  --color-text-muted: #a8a29e;  /* stone-400 */
+  --font-sans: 'Poppins', sans-serif;
+}
+
+body {
+  @apply bg-[#fcfcfb] text-stone-800 selection:bg-amber-700/20 selection:text-amber-900 font-sans antialiased;
+}
+
+.dark-theme body {
+  @apply bg-stone-900 text-stone-50;
+}
+
+.glass-panel {
+  @apply bg-white/80 backdrop-blur-xl border border-stone-200/50 shadow-sm;
+}
+
+.dark-theme .glass-panel {
+  @apply bg-stone-900/80 border-stone-800;
+}
+
+.btn-primary {
+  @apply px-5 py-2.5 bg-zinc-900 hover:bg-zinc-800 text-white rounded-md tracking-wide font-medium transition-all duration-500 ease-out shadow-sm hover:shadow-md active:scale-[0.98];
+}
+
+.btn-secondary {
+  @apply px-5 py-2.5 bg-white border border-stone-200 hover:border-stone-300 text-stone-700 rounded-md tracking-wide font-medium transition-all duration-500 ease-out;
+}
+
+.input-field {
+  @apply w-full px-4 py-3 rounded-md border border-stone-200/80 bg-stone-50/50 focus:bg-white focus:border-amber-700/50 focus:ring-4 focus:ring-amber-700/5 outline-none transition-all duration-300 text-stone-800;
+}
+
+.card {
+  @apply bg-white rounded-xl p-6 shadow-[0_2px_20px_rgb(0,0,0,0.02)] border border-stone-100 transition-all duration-500 ease-out hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)];
+}
