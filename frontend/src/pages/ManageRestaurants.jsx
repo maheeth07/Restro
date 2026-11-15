@@ -14,14 +14,14 @@ export default function ManageRestaurants() {
   }, []);
 
   const fetchRestaurants = async () => {
-    const res = await axios.get('http://localhost:5000/api/restaurants');
+    const res = await axios.get('http://https://restro-nine-tau.vercel.app//api/restaurants');
     setRestaurants(res.data);
   };
 
   const handleAdd = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/restaurants', { name, description, type });
+      await axios.post('http://https://restro-nine-tau.vercel.app//api/restaurants', { name, description, type });
       toast.success('Restaurant created!');
       setName(''); setDescription(''); setType('');
       fetchRestaurants();
@@ -42,15 +42,15 @@ export default function ManageRestaurants() {
           <form onSubmit={handleAdd} className="space-y-4">
             <div>
               <label className="text-sm font-semibold text-slate-600 block mb-1">Name</label>
-              <input type="text" className="input-field" value={name} onChange={e=>setName(e.target.value)} required />
+              <input type="text" className="input-field" value={name} onChange={e => setName(e.target.value)} required />
             </div>
             <div>
               <label className="text-sm font-semibold text-slate-600 block mb-1">Type (e.g. Fine Dining, Cafe)</label>
-              <input type="text" className="input-field" value={type} onChange={e=>setType(e.target.value)} />
+              <input type="text" className="input-field" value={type} onChange={e => setType(e.target.value)} />
             </div>
             <div>
               <label className="text-sm font-semibold text-slate-600 block mb-1">Description</label>
-              <textarea className="input-field min-h-24" value={description} onChange={e=>setDescription(e.target.value)} />
+              <textarea className="input-field min-h-24" value={description} onChange={e => setDescription(e.target.value)} />
             </div>
             <button type="submit" className="btn-primary w-full flex items-center justify-center gap-2">
               <Plus size={18} /> Add Restaurant
@@ -63,7 +63,7 @@ export default function ManageRestaurants() {
             <div key={r._id} className="card flex items-start justify-between hover:shadow-md transition-shadow">
               <div className="flex gap-4">
                 <div className="w-16 h-16 rounded-xl bg-pink-50 flex items-center justify-center border border-pink-100">
-                   <Store className="text-pink-500" size={28} />
+                  <Store className="text-pink-500" size={28} />
                 </div>
                 <div>
                   <h4 className="text-xl font-bold text-slate-800">{r.name}</h4>

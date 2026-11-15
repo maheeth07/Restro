@@ -12,7 +12,7 @@ export default function Dashboard() {
 
   const fetchStats = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/analytics/dashboard');
+      const res = await axios.get('http://https://restro-nine-tau.vercel.app//api/analytics/dashboard');
       setStats(res.data);
     } catch (err) {
       console.error(err);
@@ -54,21 +54,21 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 card min-w-0">
           <h3 className="text-lg font-bold text-stone-800 mb-6 flex items-center gap-2 uppercase tracking-wide">
-            <TrendingUp size={20} className="text-amber-700"/> Revenue Overview
+            <TrendingUp size={20} className="text-amber-700" /> Revenue Overview
           </h3>
           <div className="w-full min-w-0 mt-4">
             <ResponsiveContainer width="100%" height={300}>
               <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                 <defs>
                   <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#b45309" stopOpacity={0.4}/>
-                    <stop offset="95%" stopColor="#b45309" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="#b45309" stopOpacity={0.4} />
+                    <stop offset="95%" stopColor="#b45309" stopOpacity={0} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e7e5e4" />
                 <XAxis dataKey="name" stroke="#a8a29e" tick={{ fill: '#78716c' }} axisLine={false} tickLine={false} />
                 <YAxis stroke="#a8a29e" tick={{ fill: '#78716c' }} axisLine={false} tickLine={false} />
-                <Tooltip 
+                <Tooltip
                   contentStyle={{ borderRadius: '12px', border: '1px solid #e7e5e4', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.05)' }}
                 />
                 <Area type="monotone" dataKey="revenue" stroke="#b45309" strokeWidth={3} fillOpacity={1} fill="url(#colorRevenue)" />
@@ -79,7 +79,7 @@ export default function Dashboard() {
 
         <div className="card">
           <h3 className="text-lg font-bold text-stone-800 mb-4 flex items-center gap-2 uppercase tracking-wide">
-            <ChefHat size={20} className="text-stone-500"/> Recent Orders
+            <ChefHat size={20} className="text-stone-500" /> Recent Orders
           </h3>
           <div className="space-y-4">
             {stats.recentOrders?.length === 0 ? (
@@ -93,11 +93,10 @@ export default function Dashboard() {
                   </div>
                   <div className="text-right">
                     <p className="font-bold text-stone-800">₹{order.totalAmount?.toFixed(2)}</p>
-                    <span className={`text-xs px-2 py-1 rounded-sm font-semibold tracking-wide uppercase ${
-                      order.status === 'completed' ? 'bg-stone-200 text-stone-700' :
-                      order.status === 'preparing' ? 'bg-amber-100 text-amber-800' :
-                      'bg-stone-100 text-stone-600'
-                    }`}>
+                    <span className={`text-xs px-2 py-1 rounded-sm font-semibold tracking-wide uppercase ${order.status === 'completed' ? 'bg-stone-200 text-stone-700' :
+                        order.status === 'preparing' ? 'bg-amber-100 text-amber-800' :
+                          'bg-stone-100 text-stone-600'
+                      }`}>
                       {order.status}
                     </span>
                   </div>

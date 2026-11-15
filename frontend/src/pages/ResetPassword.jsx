@@ -18,7 +18,7 @@ export default function ResetPassword() {
     }
     setLoading(true);
     try {
-      const res = await axios.put(`http://localhost:5000/api/auth/resetpassword/${token}`, { password });
+      const res = await axios.put(`http://https://restro-nine-tau.vercel.app//api/auth/resetpassword/${token}`, { password });
       toast.success('Password successfully reset!');
       navigate('/login');
     } catch (err) {
@@ -46,9 +46,9 @@ export default function ResetPassword() {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="relative group">
             <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-pink-500 transition-colors" size={20} />
-            <input 
-              type="password" 
-              placeholder="New Password" 
+            <input
+              type="password"
+              placeholder="New Password"
               className="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-200 focus:border-pink-500 focus:ring-4 focus:ring-pink-500/20 outline-none transition-all bg-white/50 focus:bg-white text-slate-800"
               value={password} onChange={(e) => setPassword(e.target.value)} required minLength={6}
             />
@@ -56,16 +56,16 @@ export default function ResetPassword() {
 
           <div className="relative group">
             <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-pink-500 transition-colors" size={20} />
-            <input 
-              type="password" 
-              placeholder="Confirm New Password" 
+            <input
+              type="password"
+              placeholder="Confirm New Password"
               className="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-200 focus:border-pink-500 focus:ring-4 focus:ring-pink-500/20 outline-none transition-all bg-white/50 focus:bg-white text-slate-800"
               value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required minLength={6}
             />
           </div>
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             disabled={loading}
             className="w-full py-3 bg-gradient-to-r from-pink-600 to-pink-500 hover:from-pink-500 hover:to-pink-400 text-white rounded-xl font-bold shadow-lg shadow-pink-500/30 active:scale-95 transition-all flex items-center justify-center gap-2 group disabled:opacity-70 disabled:active:scale-100"
           >
