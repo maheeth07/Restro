@@ -20,8 +20,8 @@ export default function StaffManagement() {
   const fetchData = async () => {
     try {
       const [resStaff, resBranch] = await Promise.all([
-        axios.get('http://https://restro-nine-tau.vercel.app//api/auth/staff'),
-        axios.get('http://https://restro-nine-tau.vercel.app//api/branches')
+        axios.get('https://restro-backend-production.up.railway.app/api/auth/staff'),
+        axios.get('https://restro-backend-production.up.railway.app/api/branches')
       ]);
       setStaff(resStaff.data);
       setBranches(resBranch.data);
@@ -37,7 +37,7 @@ export default function StaffManagement() {
   const handleAdd = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://https://restro-nine-tau.vercel.app//api/auth/staff', {
+      await axios.post('https://restro-backend-production.up.railway.app/api/auth/staff', {
         name, email, password, role, branchIds: selectedBranches
       });
       toast.success('Staff added successfully!');

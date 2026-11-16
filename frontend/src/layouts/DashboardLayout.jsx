@@ -41,14 +41,14 @@ export default function DashboardLayout() {
 
   const fetchNotifications = async () => {
     try {
-      const res = await axios.get('http://https://restro-nine-tau.vercel.app//api/notifications');
+      const res = await axios.get('https://restro-backend-production.up.railway.app/api/notifications');
       setNotifications(res.data);
     } catch (err) { console.error('Failed fetching notifications'); }
   };
 
   const markAsRead = async (id) => {
     try {
-      await axios.put(`http://https://restro-nine-tau.vercel.app//api/notifications/${id}/read`);
+      await axios.put(`https://restro-backend-production.up.railway.app/api/notifications/${id}/read`);
       setNotifications(notifications.map(n => n._id === id ? { ...n, isRead: true } : n));
     } catch (err) { }
   };

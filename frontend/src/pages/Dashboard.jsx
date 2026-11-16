@@ -12,7 +12,7 @@ export default function Dashboard() {
 
   const fetchStats = async () => {
     try {
-      const res = await axios.get('http://https://restro-nine-tau.vercel.app//api/analytics/dashboard');
+      const res = await axios.get('https://restro-backend-production.up.railway.app/api/analytics/dashboard');
       setStats(res.data);
     } catch (err) {
       console.error(err);

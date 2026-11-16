@@ -14,14 +14,14 @@ export default function ManageRestaurants() {
   }, []);
 
   const fetchRestaurants = async () => {
-    const res = await axios.get('http://https://restro-nine-tau.vercel.app//api/restaurants');
+    const res = await axios.get('https://restro-backend-production.up.railway.app/api/restaurants');
     setRestaurants(res.data);
   };
 
   const handleAdd = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://https://restro-nine-tau.vercel.app//api/restaurants', { name, description, type });
+      await axios.post('https://restro-backend-production.up.railway.app/api/restaurants', { name, description, type });
       toast.success('Restaurant created!');
       setName(''); setDescription(''); setType('');
       fetchRestaurants();

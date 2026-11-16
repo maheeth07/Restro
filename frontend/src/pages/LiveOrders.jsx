@@ -20,7 +20,7 @@ export default function LiveOrders() {
 
   const fetchBranches = async () => {
     try {
-      const res = await axios.get('http://https://restro-nine-tau.vercel.app//api/branches');
+      const res = await axios.get('https://restro-backend-production.up.railway.app/api/branches');
       setBranches(res.data);
       if (res.data.length > 0) setSelectedBranch(res.data[0]._id);
     } catch (err) { }
@@ -28,7 +28,7 @@ export default function LiveOrders() {
 
   const fetchOrders = async () => {
     try {
-      let url = `http://https://restro-nine-tau.vercel.app//api/orders?branchId=${selectedBranch}`;
+      let url = `https://restro-backend-production.up.railway.app/api/orders?branchId=${selectedBranch}`;
       if (statusFilter) url += `&status=${statusFilter}`;
       const res = await axios.get(url);
       setOrders(res.data);
@@ -37,7 +37,7 @@ export default function LiveOrders() {
 
   const updateStatus = async (id, status) => {
     try {
-      await axios.put(`http://https://restro-nine-tau.vercel.app//api/orders/${id}`, { status });
+      await axios.put(`https://restro-backend-production.up.railway.app/api/orders/${id}`, { status });
       toast.success(`Order marked as ${status}`);
       fetchOrders();
     } catch (err) { toast.error('Error updating status'); }

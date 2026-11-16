@@ -24,12 +24,12 @@ export default function ManageBranches() {
     try {
       const formData = new FormData();
       formData.append('image', file);
-      const uploadRes = await axios.post('http://https://restro-nine-tau.vercel.app//api/upload', formData, {
+      const uploadRes = await axios.post('https://restro-backend-production.up.railway.app/api/upload', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       const imageUrl = uploadRes.data.imageUrl;
 
-      const res = await axios.post(`http://https://restro-nine-tau.vercel.app//api/branches/${branchId}/images`, { imageUrl });
+      const res = await axios.post(`https://restro-backend-production.up.railway.app/api/branches/${branchId}/images`, { imageUrl });
       setBranches(branches.map(b => b._id === branchId ? res.data : b));
       toast.success('Image added to gallery!');
     } catch (err) {
@@ -42,7 +42,7 @@ export default function ManageBranches() {
   const handleRemoveImage = async (branchId, imageUrl) => {
     if (!window.confirm('Delete this image from gallery?')) return;
     try {
-      const res = await axios.put(`http://https://restro-nine-tau.vercel.app//api/branches/${branchId}/images/remove`, { imageUrl });
+      const res = await axios.put(`https://restro-backend-production.up.railway.app/api/branches/${branchId}/images/remove`, { imageUrl });
       setBranches(branches.map(b => b._id === branchId ? res.data : b));
       toast.success('Image removed from gallery!');
     } catch (err) {
@@ -57,8 +57,8 @@ export default function ManageBranches() {
   const fetchData = async () => {
     try {
       const [resB, resR] = await Promise.all([
-        axios.get('http://https://restro-nine-tau.vercel.app//api/branches'),
-        axios.get('http://https://restro-nine-tau.vercel.app//api/restaurants')
+        axios.get('https://restro-backend-production.up.railway.app/api/branches'),
+        axios.get('https://restro-backend-production.up.railway.app/api/restaurants')
       ]);
       setBranches(resB.data);
       setRestaurants(resR.data);
@@ -69,7 +69,7 @@ export default function ManageBranches() {
   const handleAdd = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://https://restro-nine-tau.vercel.app//api/branches', { name, address, restaurantId });
+      await axios.post('https://restro-backend-production.up.railway.app/api/branches', { name, address, restaurantId });
       toast.success('Branch added!');
       setName(''); setAddress('');
       fetchData();

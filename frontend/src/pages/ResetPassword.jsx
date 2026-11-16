@@ -18,7 +18,7 @@ export default function ResetPassword() {
     }
     setLoading(true);
     try {
-      const res = await axios.put(`http://https://restro-nine-tau.vercel.app//api/auth/resetpassword/${token}`, { password });
+      const res = await axios.put(`https://restro-backend-production.up.railway.app/api/auth/resetpassword/${token}`, { password });
       toast.success('Password successfully reset!');
       navigate('/login');
     } catch (err) {

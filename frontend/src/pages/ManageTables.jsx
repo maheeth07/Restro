@@ -19,7 +19,7 @@ export default function ManageTables() {
 
   const fetchBranches = async () => {
     try {
-      const res = await axios.get('http://https://restro-nine-tau.vercel.app//api/branches');
+      const res = await axios.get('https://restro-backend-production.up.railway.app/api/branches');
       setBranches(res.data);
       if (res.data.length > 0) setSelectedBranch(res.data[0]._id);
     } catch (err) { }
@@ -27,7 +27,7 @@ export default function ManageTables() {
 
   const fetchTables = async () => {
     try {
-      const res = await axios.get(`http://https://restro-nine-tau.vercel.app//api/tables/${selectedBranch}`);
+      const res = await axios.get(`https://restro-backend-production.up.railway.app/api/tables/${selectedBranch}`);
       setTables(res.data);
     } catch (err) { }
   };
@@ -36,11 +36,11 @@ export default function ManageTables() {
     e.preventDefault();
     try {
       if (editingTable) {
-        await axios.put(`http://https://restro-nine-tau.vercel.app//api/tables/${editingTable}`, { tableNumber, capacity: Number(capacity) });
+        await axios.put(`https://restro-backend-production.up.railway.app/api/tables/${editingTable}`, { tableNumber, capacity: Number(capacity) });
         toast.success('Table updated!');
         setEditingTable(null);
       } else {
-        await axios.post('http://https://restro-nine-tau.vercel.app//api/tables', { branchId: selectedBranch, tableNumber, capacity: Number(capacity) });
+        await axios.post('https://restro-backend-production.up.railway.app/api/tables', { branchId: selectedBranch, tableNumber, capacity: Number(capacity) });
         toast.success('Table added!');
       }
       setTableNumber(''); setCapacity('');
@@ -57,7 +57,7 @@ export default function ManageTables() {
   const handleDelete = async (id) => {
     if (!window.confirm('Delete this table?')) return;
     try {
-      await axios.delete(`http://https://restro-nine-tau.vercel.app//api/tables/${id}`);
+      await axios.delete(`https://restro-backend-production.up.railway.app/api/tables/${id}`);
       fetchTables();
       toast.success('Table deleted!');
     } catch (err) { toast.error('Error deleting table'); }
@@ -65,7 +65,7 @@ export default function ManageTables() {
 
   const generateQR = async (tNum) => {
     try {
-      const res = await axios.get(`http://https://restro-nine-tau.vercel.app//api/tables/qr?branchId=${selectedBranch}&tableNumber=${tNum}`);
+      const res = await axios.get(`https://restro-backend-production.up.railway.app/api/tables/qr?branchId=${selectedBranch}&tableNumber=${tNum}`);
       setQrModal({ show: true, img: res.data.qrCodeImage, link: res.data.link });
     } catch (err) { }
   };

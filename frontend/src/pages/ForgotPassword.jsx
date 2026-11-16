@@ -13,7 +13,7 @@ export default function ForgotPassword() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post('http://https://restro-nine-tau.vercel.app//api/auth/forgotpassword', { email });
+      const res = await axios.post('https://restro-backend-production.up.railway.app/api/auth/forgotpassword', { email });
       toast.success('Reset link generated!');
       setResetLink(res.data.resetUrl);
     } catch (err) {

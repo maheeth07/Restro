@@ -101,7 +101,7 @@ export default function CustomerMenu() {
   const fetchActiveBill = async () => {
     if (!tableNumber) return;
     try {
-      const res = await axios.get(`http://https://restro-nine-tau.vercel.app//api/orders/active/${branchId}/${tableNumber}`);
+      const res = await axios.get(`https://restro-backend-production.up.railway.app/api/orders/active/${branchId}/${tableNumber}`);
       setActiveBill(res.data);
       if (res.data?.customerName) setCustomerName(res.data.customerName);
     } catch (err) { console.error('Failed to fetch running bill'); }
@@ -110,8 +110,8 @@ export default function CustomerMenu() {
   const fetchData = async () => {
     try {
       const [resBranch, resMenu] = await Promise.all([
-        axios.get(`http://https://restro-nine-tau.vercel.app//api/branches/public/${branchId}`),
-        axios.get(`http://https://restro-nine-tau.vercel.app//api/menu/${branchId}`)
+        axios.get(`https://restro-backend-production.up.railway.app/api/branches/public/${branchId}`),
+        axios.get(`https://restro-backend-production.up.railway.app/api/menu/${branchId}`)
       ]);
       setBranch(resBranch.data);
       setMenus(resMenu.data);
@@ -128,7 +128,7 @@ export default function CustomerMenu() {
 
     setOrdering(true);
     try {
-      await axios.post('http://https://restro-nine-tau.vercel.app//api/orders', {
+      await axios.post('https://restro-backend-production.up.railway.app/api/orders', {
         branchId,
         tableNumber,
         customerName: customerName || 'Guest',

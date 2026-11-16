@@ -25,7 +25,7 @@ export default function ManageMenu() {
 
   const fetchBranches = async () => {
     try {
-      const res = await axios.get('http://https://restro-nine-tau.vercel.app//api/branches');
+      const res = await axios.get('https://restro-backend-production.up.railway.app/api/branches');
       setBranches(res.data);
       if (res.data.length > 0) setSelectedBranch(res.data[0]._id);
     } catch (err) { console.error(err); }
@@ -33,7 +33,7 @@ export default function ManageMenu() {
 
   const fetchMenus = async () => {
     try {
-      const res = await axios.get(`http://https://restro-nine-tau.vercel.app//api/menu/${selectedBranch}`);
+      const res = await axios.get(`https://restro-backend-production.up.railway.app/api/menu/${selectedBranch}`);
       setMenus(res.data);
     } catch (err) { console.error(err); }
   };
@@ -47,13 +47,13 @@ export default function ManageMenu() {
       if (file) {
         const formData = new FormData();
         formData.append('image', file);
-        const uploadRes = await axios.post('http://https://restro-nine-tau.vercel.app//api/upload', formData, {
+        const uploadRes = await axios.post('https://restro-backend-production.up.railway.app/api/upload', formData, {
           headers: { 'Content-Type': 'multipart/form-data' }
         });
         uploadedImageUrl = uploadRes.data.imageUrl;
       }
 
-      await axios.post('http://https://restro-nine-tau.vercel.app//api/menu', { branchId: selectedBranch, name, price: Number(price), category, image: uploadedImageUrl });
+      await axios.post('https://restro-backend-production.up.railway.app/api/menu', { branchId: selectedBranch, name, price: Number(price), category, image: uploadedImageUrl });
       toast.success('Item added!');
       setName(''); setPrice(''); setCategory(''); setImage(''); setFile(null);
       fetchMenus();
@@ -68,7 +68,7 @@ export default function ManageMenu() {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure?')) return;
     try {
-      await axios.delete(`http://https://restro-nine-tau.vercel.app//api/menu/${id}`);
+      await axios.delete(`https://restro-backend-production.up.railway.app/api/menu/${id}`);
       fetchMenus();
       toast.success('Deleted');
     } catch (err) { toast.error('Error deleting item'); }

@@ -15,7 +15,7 @@ export default function Register() {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post('http://https://restro-nine-tau.vercel.app//api/auth/register', { name, email, password });
+      await axios.post('https://restro-backend-production.up.railway.app/api/auth/register', { name, email, password });
       toast.success('Registration setup successful. Please login.');
       navigate('/login');
     } catch (err) {
